@@ -1,11 +1,11 @@
 
 import { useEffect, useRef, useState } from 'react';
-import { MysticCursor } from '@/components/MysticCursor';
-import { FloatingElements } from '@/components/FloatingElements';
-import { PortalSystem } from '@/components/PortalSystem';
-import { CreatureCards } from '@/components/CreatureCards';
-import { MysticalVision } from '@/components/MysticalVision';
-import { Eye } from 'lucide-react';
+import { WoodenCursor } from '@/components/WoodenCursor';
+import { FloatingWoodenElements } from '@/components/FloatingWoodenElements';
+import { WoodenPortalSystem } from '@/components/WoodenPortalSystem';
+import { WoodenFigureCards } from '@/components/WoodenFigureCards';
+import { RetroVision } from '@/components/RetroVision';
+import { Sparkles } from 'lucide-react';
 
 const Index = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -24,35 +24,32 @@ const Index = () => {
   return (
     <div 
       ref={containerRef}
-      className="min-h-screen bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-950 overflow-hidden relative cursor-none"
+      className="min-h-screen bg-gradient-to-br from-cream via-wood-light to-sage overflow-hidden relative cursor-none wood-texture"
       style={{
         perspective: '1000px',
         transformStyle: 'preserve-3d'
       }}
     >
-      <MysticCursor position={mousePosition} />
+      <WoodenCursor position={mousePosition} />
       
-      {/* Mystical Vision Button */}
+      {/* Retro Vision Toggle */}
       <button
         onClick={() => setIsVisionActive(!isVisionActive)}
-        className="fixed top-6 right-6 z-50 group bg-white/10 backdrop-blur-md border border-white/20 rounded-full p-4 hover:bg-white/20 transition-all duration-300 transform hover:scale-110"
-        style={{
-          boxShadow: '0 8px 32px rgba(16, 185, 129, 0.3)',
-        }}
+        className="fixed top-6 right-6 z-50 group bg-wood-primary/10 backdrop-blur-md border-2 border-wood-primary/20 rounded-2xl p-4 hover:bg-wood-primary/20 transition-all duration-300 transform hover:scale-110 wooden-glow"
       >
-        <Eye className={`w-6 h-6 text-white transition-all duration-300 ${isVisionActive ? 'text-emerald-300 scale-125' : ''}`} />
-        <div className="absolute inset-0 rounded-full bg-emerald-400/20 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <Sparkles className={`w-6 h-6 text-wood-primary transition-all duration-300 ${isVisionActive ? 'text-warm-orange scale-125' : ''}`} />
+        <div className="absolute inset-0 rounded-2xl bg-warm-orange/20 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </button>
 
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--warm-orange)/0.1),transparent_70%)]" />
       
-      {/* Floating Mystical Particles */}
+      {/* Floating Wooden Particles */}
       <div className="absolute inset-0">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {Array.from({ length: 15 }).map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-emerald-300/60 rounded-full animate-pulse"
+            className="absolute w-2 h-2 bg-wood-primary/40 rounded-full animate-pulse float-animation"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -63,49 +60,49 @@ const Index = () => {
         ))}
       </div>
 
-      <FloatingElements mousePosition={mousePosition} />
-      <PortalSystem mousePosition={mousePosition} isVisionActive={isVisionActive} />
+      <FloatingWoodenElements mousePosition={mousePosition} />
+      <WoodenPortalSystem mousePosition={mousePosition} isVisionActive={isVisionActive} />
       
       {/* Main Content */}
       <div className="relative z-10 min-h-screen flex flex-col">
         {/* Hero Section */}
         <header className="flex-1 flex items-center justify-center px-6 py-12">
           <div className="text-center max-w-4xl">
-            <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-wider">
-              <span className="bg-gradient-to-r from-white via-emerald-200 to-emerald-300 bg-clip-text text-transparent">
-                MYSTICAL
+            <h1 className="text-6xl md:text-8xl font-bold font-comfortaa text-wood-primary mb-6 tracking-wider">
+              <span className="bg-gradient-to-r from-wood-primary via-wood-secondary to-warm-orange bg-clip-text text-transparent">
+                STIKA
               </span>
               <br />
-              <span className="text-white/90">REALM</span>
+              <span className="text-wood-secondary/90">DEW-DU</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/80 mb-8 leading-relaxed">
-              Enter the portal to discover magical companions from otherworldly dimensions
+            <p className="text-xl md:text-2xl text-wood-secondary/80 mb-8 leading-relaxed font-fredoka">
+              Where retro-inspired wooden figures meet next-generation web interactions
             </p>
             <div className="flex justify-center">
-              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 max-w-md">
-                <p className="text-white/90 text-lg">
-                  Move your cursor to interact with the mystical elements around you. 
-                  Click anywhere to create dimensional ripples.
+              <div className="bg-wood-primary/10 backdrop-blur-md border-2 border-wood-primary/20 rounded-3xl p-8 max-w-md wooden-glow">
+                <p className="text-wood-primary/90 text-lg font-fredoka">
+                  Hover your cursor to interact with our wooden companions. 
+                  Click anywhere to create magical ripples in the digital wood grain.
                 </p>
               </div>
             </div>
           </div>
         </header>
 
-        {/* Creatures Section */}
+        {/* Wooden Figures Section */}
         <section className="px-6 py-12">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-12">
-              <span className="bg-gradient-to-r from-emerald-300 to-white bg-clip-text text-transparent">
-                Mystical Companions
+            <h2 className="text-4xl md:text-5xl font-bold font-comfortaa text-wood-primary text-center mb-12">
+              <span className="bg-gradient-to-r from-warm-orange to-wood-primary bg-clip-text text-transparent">
+                Wooden Companions
               </span>
             </h2>
-            <CreatureCards mousePosition={mousePosition} />
+            <WoodenFigureCards mousePosition={mousePosition} />
           </div>
         </section>
       </div>
 
-      <MysticalVision isActive={isVisionActive} mousePosition={mousePosition} />
+      <RetroVision isActive={isVisionActive} mousePosition={mousePosition} />
     </div>
   );
 };

@@ -62,12 +62,27 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Stika-Dew-Du Brand Colors
+				wood: {
+					primary: 'hsl(var(--wood-primary))',
+					secondary: 'hsl(var(--wood-secondary))',
+					light: 'hsl(var(--wood-light))'
+				},
+				cream: 'hsl(var(--cream))',
+				sage: 'hsl(var(--sage))',
+				'sky-blue': 'hsl(var(--sky-blue))',
+				'warm-orange': 'hsl(var(--warm-orange))',
+				'soft-pink': 'hsl(var(--soft-pink))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			fontFamily: {
+				'fredoka': ['Fredoka', 'sans-serif'],
+				'comfortaa': ['Comfortaa', 'sans-serif'],
 			},
 			keyframes: {
 				'accordion-down': {
@@ -89,12 +104,22 @@ export default {
 				'spin-slow': {
 					'0%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(360deg)' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'wood-grain': {
+					'0%': { backgroundPosition: '0% 0%' },
+					'100%': { backgroundPosition: '100% 100%' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'spin-slow': 'spin-slow 3s linear infinite'
+				'spin-slow': 'spin-slow 3s linear infinite',
+				'float': 'float 3s ease-in-out infinite',
+				'wood-grain': 'wood-grain 20s linear infinite'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

@@ -3,95 +3,90 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Stika-Dew-Du Design System - Retro-inspired wooden figures with next-gen interactions */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 42 25% 95%;
+    --foreground: 25 45% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 42 25% 95%;
+    --card-foreground: 25 45% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 42 25% 95%;
+    --popover-foreground: 25 45% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 25 45% 15%;
+    --primary-foreground: 42 25% 95%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 35 35% 85%;
+    --secondary-foreground: 25 45% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 35 35% 85%;
+    --muted-foreground: 25 25% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 200 85% 60%;
+    --accent-foreground: 25 45% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 42 25% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 35 25% 75%;
+    --input: 35 25% 75%;
+    --ring: 200 85% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Stika-Dew-Du Brand Colors */
+    --wood-primary: 25 45% 15%;
+    --wood-secondary: 30 35% 25%;
+    --wood-light: 35 25% 75%;
+    --cream: 42 25% 95%;
+    --sage: 140 25% 65%;
+    --sky-blue: 200 85% 60%;
+    --warm-orange: 20 85% 65%;
+    --soft-pink: 340 60% 80%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 42 25% 95%;
+    --sidebar-foreground: 25 45% 15%;
+    --sidebar-primary: 25 45% 15%;
+    --sidebar-primary-foreground: 42 25% 95%;
+    --sidebar-accent: 35 35% 85%;
+    --sidebar-accent-foreground: 25 45% 15%;
+    --sidebar-border: 35 25% 75%;
+    --sidebar-ring: 200 85% 60%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
+    --background: 25 45% 8%;
+    --foreground: 42 25% 95%;
+    --card: 25 45% 8%;
+    --card-foreground: 42 25% 95%;
+    --popover: 25 45% 8%;
+    --popover-foreground: 42 25% 95%;
+    --primary: 42 25% 95%;
+    --primary-foreground: 25 45% 15%;
+    --secondary: 30 35% 12%;
+    --secondary-foreground: 42 25% 95%;
+    --muted: 30 35% 12%;
+    --muted-foreground: 35 25% 65%;
+    --accent: 200 85% 60%;
+    --accent-foreground: 25 45% 8%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --destructive-foreground: 42 25% 95%;
+    --border: 30 35% 20%;
+    --input: 30 35% 20%;
+    --ring: 200 85% 60%;
+    --sidebar-background: 25 45% 8%;
+    --sidebar-foreground: 42 25% 95%;
+    --sidebar-primary: 200 85% 60%;
+    --sidebar-primary-foreground: 25 45% 8%;
+    --sidebar-accent: 30 35% 12%;
+    --sidebar-accent-foreground: 42 25% 95%;
+    --sidebar-border: 30 35% 20%;
+    --sidebar-ring: 200 85% 60%;
   }
 }
 
@@ -101,11 +96,15 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-fredoka;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-comfortaa;
   }
 }
 
-/* Custom 3D and glassmorphism styles */
+/* Stika-Dew-Du Custom Animations */
 .perspective-1000 {
   perspective: 1000px;
 }
@@ -122,39 +121,70 @@ All colors MUST be HSL.
   transform: rotateY(180deg);
 }
 
-/* Mystical cursor effects */
+/* Wood-grain cursor effects */
 html {
   cursor: none;
 }
 
-/* Custom scrollbar for mystical theme */
+/* Custom scrollbar for Stika-Dew-Du theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(16, 185, 129, 0.1);
+  background: hsl(var(--wood-light) / 0.3);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(16, 185, 129, 0.3);
+  background: hsl(var(--wood-primary) / 0.6);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(16, 185, 129, 0.5);
+  background: hsl(var(--wood-primary) / 0.8);
 }
 
-/* Mystical glow animation */
-@keyframes mystical-glow {
+/* Wooden glow animation */
+@keyframes wooden-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 0 20px hsl(var(--warm-orange) / 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+    box-shadow: 0 0 40px hsl(var(--warm-orange) / 0.6);
   }
 }
 
-.mystical-glow {
-  animation: mystical-glow 3s ease-in-out infinite;
+.wooden-glow {
+  animation: wooden-glow 3s ease-in-out infinite;
+}
+
+/* Floating animation for wooden figures */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Wood texture overlay */
+@keyframes wood-grain {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+.wood-texture {
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      hsl(var(--wood-primary) / 0.1) 0px,
+      hsl(var(--wood-secondary) / 0.1) 2px,
+      hsl(var(--wood-primary) / 0.1) 4px
+    );
+  animation: wood-grain 20s linear infinite;
 }
