@@ -1,12 +1,12 @@
-
 import { useState } from 'react';
-import { Heart, Star, Sparkles } from 'lucide-react';
+import { Heart, Star, Sparkles, Crown, Zap, Vault } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface WoodenFigureCardsProps {
   mousePosition: { x: number; y: number };
 }
 
-interface WoodenFigure {
+export interface WoodenFigure {
   id: number;
   name: string;
   type: string;
@@ -15,48 +15,42 @@ interface WoodenFigure {
   description: string;
   image: string;
   traits: string[];
+  exclusiveContent: number;
 }
 
-const woodenFigures: WoodenFigure[] = [
+export const woodenFigures: WoodenFigure[] = [
   {
     id: 1,
-    name: "Sage the Wise",
-    type: "Ancient Guardian",
+    name: "StikaDeux Genesis",
+    type: "OG Edition",
     rarity: "Legendary",
-    price: "$89.99",
-    description: "Hand-carved from century-old oak, Sage brings ancient wisdom to your digital space with interactive storytelling.",
-    image: "photo-1618160702438-9b02ab6515c9",
-    traits: ["Wisdom Keeper", "Story Teller", "Ancient Knowledge"]
+    price: "$99.99",
+    description: "The original revolutionary companion that started it all. Unlocks exclusive behind-the-scenes content from the StikaDeux collective and early access to future revolutionary releases. This content exists nowhere else in the universe.",
+    image: "/images/original.png",
+    traits: ["Founding Revolutionary", "Exclusive Vault Access", "Forever Ownership"],
+    exclusiveContent: 12
   },
   {
     id: 2,
-    name: "Luna the Dreamer",
-    type: "Night Companion",
+    name: "StikaDeux Stream Crown",
+    type: "Streamer University",
     rarity: "Epic",
-    price: "$64.99",
-    description: "Crafted from moonlit birch, Luna guides peaceful dreams and creates calming ambient experiences.",
-    image: "photo-1466721591366-2d5fba72006d",
-    traits: ["Dream Guide", "Night Vision", "Peaceful Aura"]
+    price: "$129.99",
+    description: "Kai Cenat's digital dynasty edition unlocks his secret content vault with unreleased gaming sessions, personal vlogs, and exclusive community events. Content that will never be available on any platform or streaming service.",
+    image: "/images/kai_cenat.png",
+    traits: ["Stream Vault Access", "Personal Messages", "Community Crown"],
+    exclusiveContent: 18
   },
   {
     id: 3,
-    name: "Spark the Creator",
-    type: "Innovation Spirit",
-    rarity: "Rare",
-    price: "$42.99",
-    description: "Born from lightning-struck pine, Spark ignites creativity and brings playful energy to digital interactions.",
-    image: "photo-1535268647677-300dbf3d78d1",
-    traits: ["Creative Spark", "Innovation", "Playful Energy"]
-  },
-  {
-    id: 4,
-    name: "Grove the Protector",
-    type: "Forest Guardian",
-    rarity: "Epic",
-    price: "$67.99",
-    description: "Carved from ancient redwood, Grove stands as a digital sentinel, protecting your online presence with natural grace.",
-    image: "photo-1493962853295-0fd70327578a",
-    traits: ["Digital Guardian", "Nature's Strength", "Protective Presence"]
+    name: "StikaDeux Sonic Seraph",
+    type: "Rap Deity",
+    rarity: "Ultra Rare",
+    price: "$149.99",
+    description: "Doja Cat's musical mystique edition unlocks her exclusive sonic universe with unreleased tracks, behind-the-scenes studio footage, and personal artistic creations. This content will never exist on any streaming platform.",
+    image: "/images/doja_cat.png",
+    traits: ["Unreleased Music Vault", "Studio Secrets", "Artist's Personal Gallery"],
+    exclusiveContent: 24
   }
 ];
 
@@ -75,8 +69,21 @@ export const WoodenFigureCards = ({ mousePosition }: WoodenFigureCardsProps) => 
     });
   };
 
+  const getRarityIcon = (rarity: string) => {
+    switch (rarity) {
+      case 'Legendary':
+        return <Crown className="w-4 h-4 text-warm-orange" />;
+      case 'Epic':
+        return <Zap className="w-4 h-4 text-warm-orange" />;
+      case 'Ultra Rare':
+        return <Sparkles className="w-4 h-4 text-warm-orange" />;
+      default:
+        return <Star className="w-4 h-4 text-warm-orange" />;
+    }
+  };
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto max-w-5xl">
       {woodenFigures.map(figure => (
         <div
           key={figure.id}
@@ -100,22 +107,30 @@ export const WoodenFigureCards = ({ mousePosition }: WoodenFigureCardsProps) => 
               transition-all duration-300 wooden-glow wood-texture">
               <div className="relative h-full">
                 <img
-                  src={`https://images.unsplash.com/${figure.image}?auto=format&fit=crop&w=400&h=300`}
+                  src={figure.image}
                   alt={figure.name}
                   className="w-full h-48 object-cover rounded-t-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-wood-primary/60 via-transparent to-transparent rounded-t-2xl" />
                 
+                {/* Revolutionary Badge */}
+                <div className="absolute top-4 right-4 bg-warm-orange/20 backdrop-blur-sm rounded-full px-2 py-1 border border-warm-orange/30">
+                  <span className="text-xs font-bold text-warm-orange">REV</span>
+                </div>
+                
                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-cream to-transparent">
                   <div className="flex items-center gap-2 mb-2">
-                    <Star className="w-4 h-4 text-warm-orange" />
+                    {getRarityIcon(figure.rarity)}
                     <span className="text-sm text-wood-secondary font-medium font-fredoka">{figure.rarity}</span>
                   </div>
                   <h3 className="text-xl font-bold text-wood-primary mb-2 font-comfortaa">{figure.name}</h3>
                   <p className="text-wood-secondary text-sm mb-3 font-fredoka">{figure.type}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-bold text-wood-primary font-comfortaa">{figure.price}</span>
-                    <Heart className="w-6 h-6 text-warm-orange hover:text-soft-pink transition-colors cursor-pointer" />
+                    <div className="flex items-center gap-2">
+                      <Vault className="w-4 h-4 text-warm-orange" />
+                      <span className="text-xs text-warm-orange font-medium">{figure.exclusiveContent}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -127,7 +142,7 @@ export const WoodenFigureCards = ({ mousePosition }: WoodenFigureCardsProps) => 
               <div className="h-full flex flex-col">
                 <div className="flex items-center gap-2 mb-4">
                   <Sparkles className="w-5 h-5 text-warm-orange" />
-                  <span className="text-warm-orange font-medium font-fredoka">Retro Traits</span>
+                  <span className="text-warm-orange font-medium font-fredoka">Revolutionary Traits</span>
                 </div>
                 
                 <h3 className="text-xl font-bold text-wood-primary mb-3 font-comfortaa">{figure.name}</h3>
@@ -142,10 +157,20 @@ export const WoodenFigureCards = ({ mousePosition }: WoodenFigureCardsProps) => 
                   ))}
                 </div>
                 
-                <button className="w-full bg-wood-primary hover:bg-wood-secondary text-cream font-bold py-3 px-4 rounded-2xl
-                  transition-all duration-300 transform hover:scale-105 active:scale-95 font-fredoka wooden-glow">
-                  Adopt Companion
-                </button>
+                <div className="flex items-center gap-2 mb-4 p-2 bg-warm-orange/10 rounded-lg">
+                  <Vault className="w-4 h-4 text-warm-orange" />
+                  <span className="text-wood-primary text-sm font-fredoka">
+                    <strong>{figure.exclusiveContent}</strong> exclusive vault items
+                  </span>
+                </div>
+                
+                <Link 
+                  to={`/product/${figure.id}`}
+                  className="block w-full bg-wood-primary hover:bg-wood-secondary text-cream font-bold py-3 px-4 rounded-2xl
+                  text-center transition-all duration-300 transform hover:scale-105 active:scale-95 font-fredoka wooden-glow"
+                >
+                  Join Revolution
+                </Link>
               </div>
             </div>
           </div>

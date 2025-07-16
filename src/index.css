@@ -122,8 +122,50 @@
 }
 
 /* Wood-grain cursor effects */
-html {
-  cursor: none;
+
+/* Force hide default cursor everywhere */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+/* Ensure cursor is hidden on interactive elements */
+a, button, input, textarea, select, 
+[role="button"], [tabindex], 
+.cursor-pointer, .hover\:cursor-pointer:hover {
+  cursor: none !important;
+}
+
+/* Prevent cursor conflicts */
+.wooden-cursor-container {
+  cursor: none !important;
+}
+
+/* Ensure our custom cursor stays on top */
+.wooden-cursor {
+  z-index: 999999 !important;
+  position: fixed !important;
+  pointer-events: none !important;
+}
+
+/* Debug styles - add these temporarily to see if cursor is rendering */
+.debug-cursor {
+  border: 2px solid red !important;
+  background: rgba(255, 0, 0, 0.5) !important;
+}
+
+/* Ensure no elements are blocking the cursor */
+.cursor-none {
+  cursor: none !important;
+}
+
+/* Additional safeguards */
+html, body {
+  cursor: none !important;
+}
+
+/* Prevent any hover effects from showing default cursor */
+*:hover {
+  cursor: none !important;
 }
 
 /* Custom scrollbar for Stika-Dew-Du theme */
